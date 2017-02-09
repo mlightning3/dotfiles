@@ -11,7 +11,7 @@ cd ~
 if [[ -e .bashrc ]] ; then
     cp .bashrc .bashrc.original
 fi
-ln -s $DIR/.bashrc ~/.bashrc
+ln -s "$DIR"/.bashrc ~/.bashrc
 
 # Next .vim(rc)
 if [[ -e .vimrc ]] ; then
@@ -20,8 +20,8 @@ fi
 if [[ -e .vim ]] ; then
     cp -r .vim .vim.original
 fi
-ln -s $DIR/.vimrc ~/.vimrc
-ln -s $DIR/.vim ~/.vim
+ln -s "$DIR"/.vimrc ~/.vimrc
+ln -s "$DIR"/.vim ~/.vim
 
 # Next .git
 if [[ -e .gitconfig ]] ; then
@@ -30,6 +30,6 @@ fi
 if [[ -e .gitignore_global ]] ; then
     cp .gitignore_global .gitignore_global.original
 fi
-ln -s $DIR/.gitconfig ~/.gitconfig
-ln -s $DIR/.gitignore_global .gitignore_global
+ln -s "$DIR"/.gitconfig ~/.gitconfig
+ln -s "$DIR"/.gitignore_global ~/.gitignore_global
 
