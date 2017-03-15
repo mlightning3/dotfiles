@@ -124,10 +124,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# >>>>BEGIN ADDED BY CNCHI INSTALLER<<<< #
-BROWSER=/usr/bin/chromium
+
 EDITOR=/usr/bin/vim
-# >>>>>END ADDED BY CNCHI INSTALLER<<<<< #
 
 export PAGER='vimpager'
 alias less=$PAGER

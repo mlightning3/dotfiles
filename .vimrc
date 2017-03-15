@@ -17,22 +17,9 @@ Plugin 'morhetz/gruvbox'
 " Install flake8 for Python PEP8
 Plugin 'scrooloose/syntastic'
 
-" YouCompleteMe completions
-"Plugin 'Valloric/YouCompleteMe'
-" If YCM is unavailable for your platform, try SuperTab instead
-"Plugin 'ervandew/supertab'
-
-" Emmet, an HTML/CSS macro engine
-" The trigger key is Ctrl-y-,
-Plugin 'mattn/emmet-vim'
-
 " File tree
 " Use :NERDTree to open the tree
 Plugin 'scrooloose/nerdtree'
-
-" Sublime Text style multiple cursors
-" Use Ctrl+n to highlight matches and Ctrl+b to undo highlight
-Plugin 'terryma/vim-multiple-cursors'
 
 " Fancy statusbar
 " Powerline fonts recommended
@@ -64,14 +51,6 @@ Plugin 'tpope/vim-commentary'
 " Use :PrevimOpen while editing Markdown to open a live preview
 Plugin 'kannokanno/previm'
 
-" Highlight trailing whitespace
-" Use :StripWhitespace to remove trailing shitespace
-" Plugin 'ntpeters/vim-better-whitespace'
-
-" Jump around Vimium-style 
-" Use Leader-Leader-Motion <target> to jump around
-Plugin 'easymotion/vim-easymotion'
-
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -81,15 +60,6 @@ set exrc
 set secure
 
 " Color scheme
-" If using a Base16 terminal theme designed to keep the 16 ANSI colors intact
-" (a "256" variation) and have successfully modified your 256 colorspace with
-" base16-shell you must uncomment the following line
-" let base16colorspace=256
-" try
-" colorscheme 256_jungle
-" catch
-" colorscheme slate
-"endtry
 let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
@@ -157,12 +127,8 @@ let g:airline_powerline_fonts = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-" Multiple cursors tweaks
-" Since we bound Ctrl+P, we have to rebind previous selection
-let g:multi_cursor_prev_key='<C-b>'
-
 " Command to open browser for Markdown Preview
-let g:previm_open_cmd = 'google-chrome-stable'
+let g:previm_open_cmd = 'firefox'
 
 " Syntastic Tweaks
 " Display a statusline message if errors are detected
@@ -182,7 +148,4 @@ let g:syntastic_check_on_wq = 0
 " Display diff markers between index and HEAD
 let g:gitgutter_diff_args = ' HEAD '
 
-" If using SuperTab instead of YCM, list completions top-to-bottom
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-"
 set clipboard=unnamedplus
