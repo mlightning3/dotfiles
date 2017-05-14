@@ -98,7 +98,7 @@ alias l='ls -CF'
 
 alias grep='grep --color=tty -d skip'
 
-alias vi=vim
+alias vi=nvim
 alias cp="cp -i"    #confirms before overwrite
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -125,7 +125,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 export PAGER='vimpager'
 alias less=$PAGER

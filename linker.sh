@@ -33,3 +33,16 @@ fi
 ln -s "$DIR"/.gitconfig ~/.gitconfig
 ln -s "$DIR"/.gitignore_global ~/.gitignore_global
 
+# .config stuff
+cd ~
+if [[ ! -e .config ]] ; then
+    mkdir .config
+fi
+
+# Neovim
+cd .config
+if [[ -e nvim ]] ; then
+    cp -r nvim nvim.original
+fi
+ln -s "$DIR"/nvim ~/.config/nvim
+
