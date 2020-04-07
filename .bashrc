@@ -100,6 +100,9 @@ alias grep='grep --color=tty -d skip'
 
 alias vi=nvim
 alias cp="cp -i"    #confirms before overwrite
+alias ip="ip -color"
+
+alias dd4='sudo dd bs=4M status=progress oflag=sync'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,6 +129,3 @@ if ! shopt -oq posix; then
 fi
 
 export EDITOR=/usr/bin/nvim
-
-export PAGER='vimpager'
-alias less=$PAGER

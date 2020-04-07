@@ -1,10 +1,15 @@
 " BEGIN VUNDLE CONFIG
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Vundle, a plugin manager for vim
 Plugin 'gmarik/Vundle.vim'
+
+" Colorschemes from github
+Bundle 'clinstid/eink.vim'
+Bundle 'logico-dev/typewriter'
 
 " gruvbox colorscheme
 Plugin 'morhetz/gruvbox'
@@ -30,12 +35,6 @@ Plugin 'airblade/vim-gitgutter'
 " CtrlP fuzzy search
 " Use Ctrl+P to search a project for a file
 Plugin 'kien/ctrlp.vim'
-
-" Ansible syntax and indentation
-Plugin 'chase/vim-ansible-yaml'
-
-" Salt syntax and indentation
-Plugin 'saltstack/salt-vim'
 
 " Automatically close parentheses, etc.
 Plugin 'Raimondi/delimitMate'
@@ -63,10 +62,10 @@ set background=dark
 syntax on
 
 " Sane defaults for indentation
-" set expandtab
-set softtabstop=4
+set tabstop=4
 set shiftwidth=4
 set autoindent
+set noexpandtab
 
 " Show line numbers
 set number
@@ -140,6 +139,6 @@ let g:syntastic_check_on_wq = 0
 
 " GitGutter tweaks
 " Display diff markers between index and HEAD
-let g:gitgutter_diff_args = ' HEAD '
+"let g:gitgutter_diff_args = ' HEAD '
 
 set clipboard+=unnamedplus

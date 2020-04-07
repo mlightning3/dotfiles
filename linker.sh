@@ -1,48 +1,54 @@
 #!/bin/bash
 
-# Matt Kohls 2017
+# Matt Kohls 2020
 # License GPLv3 or later
 
 # Save dir of where we start from to link back to
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd ~
+cd ~ || echo "Unable to change directory" && exit
 
 # Start with .bashrc
 if [[ -e .bashrc ]] ; then
-    cp .bashrc .bashrc.original
+    mv .bashrc .bashrc.original
 fi
 ln -s "$DIR"/.bashrc ~/.bashrc
 
 # Next .vim(rc)
 if [[ -e .vimrc ]] ; then
-    cp .vimrc .vimrc.original
-fi
-if [[ -e .vim ]] ; then
-    cp -r .vim .vim.original
+    mv .vimrc .vimrc.original
 fi
 ln -s "$DIR"/.vimrc ~/.vimrc
-ln -s "$DIR"/.vim ~/.vim
+
+echo "Install VundleVim if not already present"
 
 # Next .git
 if [[ -e .gitconfig ]] ; then
-    cp .gitconfig .gitconfig.original
+    mv .gitconfig .gitconfig.original
 fi
 if [[ -e .gitignore_global ]] ; then
-    cp .gitignore_global .gitignore_global.original
+    mv .gitignore_global .gitignore_global.original
 fi
 ln -s "$DIR"/.gitconfig ~/.gitconfig
 ln -s "$DIR"/.gitignore_global ~/.gitignore_global
 
+# Conky
+if [[ -e .conkyrc ]] ; then
+	mv .conkyrc .conkyrc_original
+fi
+ln -s "$DIR"/.conkyrc ~/.conkyrc
+
 # .config stuff
-cd ~
+cd ~ || echo "Unable to change directory" && exit
 if [[ ! -e .config ]] ; then
     mkdir .config
 fi
 
 # Neovim
-cd .config
+cd .config || echo "Unable to access config directory" && exit
 if [[ -e nvim ]] ; then
-    cp -r nvim nvim.original
+    mv nvim nvim.original
+else
+	mkdir nvim
 fi
-ln -s "$DIR"/nvim ~/.config/nvim
+ln -s "$DIR"/init.vim ~/.config/nvim/init.vim
 

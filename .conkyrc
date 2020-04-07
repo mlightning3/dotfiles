@@ -1,0 +1,106 @@
+-- Allows us to use our own variables
+-- Found on stackoverflow by Oka
+local function interp (s, t)
+    return s:gsub('(#%b{})', function (w)
+        return t[w:sub(3, -2)] or w
+    end)
+end
+
+-- Variables for whatever we want
+-- Should be used as #{var} in conky.text and added to tuple at end
+eth0 = 'enp11s0'
+eth1 = 'enp0s31f6'
+wifi = 'wlp3s0'
+
+-- conky configuration
+conky.config = {
+			 total_run_times = 0,
+			 background = true,
+			 use_xft = true,
+			 font = 'Hack:bold:size=9',
+			 xftalpha = 0.8, 
+			 update_interval = 0.5,
+
+			 own_window = true,
+			 own_window_argb_visual = true,
+			 own_window_argb_value = 120,
+			 own_window_type = 'desktop',
+			 own_window_hints= 'undecorated,below,sticky,skip_taskbar,skip_pager',
+			 own_window_color= '212121',
+			 use_xft = true,
+			 xftalpha = 0.8,
+
+			 double_buffer = true,
+
+			 maximum_width = 350,
+			 minimum_width = 200,
+			 minimum_height = 200,
+
+			 draw_shades = true,
+			 draw_outline = false,
+			 draw_borders = false,
+			 draw_graph_borders = true,
+
+			 default_color = 'F2F2F2',
+			 color0 = 'ffa500',
+
+			 alignment = 'top_left',
+			 gap_x = 2572,
+			 gap_y = 370,
+			 uppercase = false,
+			 cpu_avg_samples = 1,
+			 net_avg_samples = 1,
+			 override_utf8_locale = false
+};
+
+conky.text = interp( [[
+${color0}S Y S T E M    I N F O
+${hr}
+${color0}Host:$color$alignr$nodename
+${color0}Kernel:$color$alignr$kernel
+${color0}Uptime:$color$alignr$uptime
+
+${color0}Disk usage:$color$alignr${fs_used /}/${fs_size /}
+${fs_bar /}
+
+${color0}CPU usage:$color$alignr${cpu cpu0}%
+${color0}CPU temp:$color$alignr${acpitemp}C
+
+${color0}CPU usage${alignr}CPU%	MEM%$color  
+${top name 1}${alignr}${top cpu 1}	${top mem 1}
+${top name 2}${alignr}${top cpu 2}	${top mem 2}
+${top name 3}${alignr}${top cpu 3}	${top mem 3}
+
+${color0}Memory usage$color
+${top_mem name 1}${alignr}${top_mem cpu 1}	${top_mem mem 1}
+${top_mem name 2}${alignr}${top_mem cpu 2}	${top_mem mem 2}
+${top_mem name 3}${alignr}${top_mem cpu 3}	${top_mem mem 3}
+
+${color0}RAM:$color$alignr$mem/$memmax
+${memgraph 20,200 0000ff 0000ff}
+
+${color0}Processes running:$color$alignr${running_processes} 
+
+${color0}N E T W O R K
+${hr}$color
+${color0}Wired 1$color
+${color0}IP:$color$alignr${addr #{eth0}}
+${color0}Up:$color$alignr${upspeed #{eth0}}
+${upspeedgraph #{eth0} 30,200 ff0000 ff0000}
+${color0}Down:$color$alignr${downspeed #{eth0}}
+${downspeedgraph #{eth0} 30,200 00cd00 00cd00}
+
+${color0}Wired 2$color
+${color0}IP:$color$alignr${addr #{eth1}}
+${color0}Up:$color$alignr${upspeed #{eth1}}
+${upspeedgraph #{eth1} 30,200 ff0000 ff0000}
+${color0}Down:$color$alignr${downspeed #{eth1}}
+${downspeedgraph #{eth1} 30,200 00cd00 00cd00}
+
+${color0}Wireless$color
+${color0}IP:$color$alignr${addr #{wifi}}
+${color0}Up:$color$alignr${upspeed #{wifi}}
+${upspeedgraph #{wifi} 30,200 ff0000 ff0000}
+${color0}Down:$color$alignr${downspeed #{wifi}}
+${downspeedgraph #{wifi} 30,200 00cd00 00cd00}
+]], { eth0 = eth0, eth1 = eth1, wifi = wifi });
