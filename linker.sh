@@ -5,7 +5,7 @@
 
 # Save dir of where we start from to link back to
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd ~ || echo "Unable to change directory" && exit
+cd ~ || (echo "Unable to change directory" && exit)
 
 # Start with .bashrc
 if [[ -e .bashrc ]] ; then
@@ -38,13 +38,13 @@ fi
 ln -s "$DIR"/.conkyrc ~/.conkyrc
 
 # .config stuff
-cd ~ || echo "Unable to change directory" && exit
+cd ~ || (echo "Unable to change directory" && exit)
 if [[ ! -e .config ]] ; then
     mkdir .config
 fi
 
 # Neovim
-cd .config || echo "Unable to access config directory" && exit
+cd .config || (echo "Unable to access config directory" && exit)
 if [[ -e nvim ]] ; then
     mv nvim nvim.original
 else
