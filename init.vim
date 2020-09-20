@@ -1,7 +1,7 @@
 " BEGIN VUNDLE CONFIG
 set nocompatible
 filetype off
-set rtp+=~/.config/nvim/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " Vundle, a plugin manager for vim
